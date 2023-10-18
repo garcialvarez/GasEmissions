@@ -7,12 +7,11 @@ public interface StatisticsService {
     Double meanMethane();
     Double meanNitrousOxide();
     Double meanGreenhouseGases();
+
     //Median
-    /*Double medianCarbonDioxide();
+    Double medianCarbonDioxide();
     Double medianMethane();
     Double medianNitrousOxide();
     Double medianGreenhouseGases();
-    //Mode
-    Double modeGreenhouseGases();*/
 
 }
