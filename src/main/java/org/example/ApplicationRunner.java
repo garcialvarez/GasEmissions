@@ -48,5 +48,11 @@ public class ApplicationRunner {
                 MessageFormat.format(
                         "Greenhouse Gases emissions median: {0}\n",
                         df.format(statisticsService.medianGreenhouseGases())));
+
+        //Mode
+        System.out.println(
+                MessageFormat.format(
+                        "Greenhouse Gases mode: {0}\n",
+                        statisticsService.modeGreenhouseGases()));
     }
 }

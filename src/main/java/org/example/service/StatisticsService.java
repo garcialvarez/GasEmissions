@@ -14,4 +14,7 @@ public interface StatisticsService {
     Double medianNitrousOxide();
     Double medianGreenhouseGases();
 
+    //Mode
+    Double modeGreenhouseGases();
+
 }
