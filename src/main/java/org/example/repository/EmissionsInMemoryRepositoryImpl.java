@@ -1,14 +1,11 @@
 package org.example.repository;
-
 import org.example.model.GasEmissions;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmissionsInMemoryRepositoryImpl implements EmissionsRepository {
     @Override
     public List<GasEmissions> findAllEmissions(){
-
 
         List<GasEmissions> emissionsList = new ArrayList<>();
                 emissionsList.add(new GasEmissions("China",11948120.39D, 1186285.50D, 536920.23D, 13942868.65D));
@@ -31,7 +28,6 @@ public class EmissionsInMemoryRepositoryImpl implements EmissionsRepository {
                 emissionsList.add(new GasEmissions("United Kingdom",318923.72D, 50416.24D, 27697.36D, 398324.97D));
                 emissionsList.add(new GasEmissions("Poland",295931.29D, 29540.61D, 22864.79D, 355384.14D));
                 emissionsList.add(new GasEmissions("Italy",295419.36D, 43889.47D, 15990.14D, 367129.74D));
-
 
         return emissionsList;
     }

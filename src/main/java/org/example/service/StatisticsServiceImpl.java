@@ -1,21 +1,19 @@
 package org.example.service;
-
 import org.example.model.GasEmissions;
 import org.example.repository.EmissionsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
 public class StatisticsServiceImpl implements StatisticsService{
 
-    private static final Logger logger = LoggerFactory.getLogger(StatisticsServiceImpl.class);
     private final EmissionsRepository emissionsRepository;
     public StatisticsServiceImpl(EmissionsRepository emissionsRepository) {
         this.emissionsRepository = emissionsRepository;
     }
+    private static final Logger logger = LoggerFactory.getLogger(StatisticsServiceImpl.class);
 
     //Mean
     public Double meanCarbonDioxide(){
