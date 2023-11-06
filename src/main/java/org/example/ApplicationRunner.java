@@ -1,5 +1,5 @@
 package org.example;
-import org.example.repository.EmissionsInMemoryRepositoryImpl;
+import org.example.repository.EmissionsUsingFileRepositoryImpl;
 import org.example.service.StatisticsService;
 import org.example.service.StatisticsServiceImpl;
 import java.text.DecimalFormat;
@@ -9,7 +9,7 @@ public class ApplicationRunner {
     public static void main(String[] args) {
 
         StatisticsService statisticsService =
-                new StatisticsServiceImpl(new EmissionsInMemoryRepositoryImpl());
+                new StatisticsServiceImpl(new EmissionsUsingFileRepositoryImpl());
 
         DecimalFormat df = new DecimalFormat("###,###.00");
 
