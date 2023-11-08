@@ -1,6 +1,6 @@
 package org.example.service;
 import static org.junit.jupiter.api.Assertions.*;
-import org.example.repository.EmissionsInMemoryRepositoryImpl;
+import org.example.repository.EmissionsUsingFileRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ public class StatisticsServiceImplTest {
     private StatisticsService statisticsService;
 
     @BeforeEach
-    void setUp() {this.statisticsService = new StatisticsServiceImpl(new EmissionsInMemoryRepositoryImpl());}
+    void setUp() {this.statisticsService = new StatisticsServiceImpl(new EmissionsUsingFileRepositoryImpl());}
 
     //Mean
     @Test

@@ -22,12 +22,10 @@ public class StatisticsServiceImpl implements StatisticsService{
 
         List<GasEmissions> emissionsList = this.emissionsRepository.findAllEmissions();
 
-        Double totalCarbonDioxide = 0D;
-        for (GasEmissions data : emissionsList) {
-            totalCarbonDioxide += data.carbonDioxide();
-        }
+        Double totalCarbonDioxide = emissionsList.stream().mapToDouble(GasEmissions::carbonDioxide).sum();
 
         return totalCarbonDioxide / emissionsList.size();
+
     }
     public Double meanMethane(){
 
@@ -35,10 +33,7 @@ public class StatisticsServiceImpl implements StatisticsService{
 
         List<GasEmissions> emissionsList = this.emissionsRepository.findAllEmissions();
 
-        Double totalMethane = 0D;
-        for (GasEmissions data : emissionsList) {
-            totalMethane += data.methane();
-        }
+        Double totalMethane = emissionsList.stream().mapToDouble(GasEmissions::methane).sum();
 
         return totalMethane / emissionsList.size();
     }
@@ -48,10 +43,7 @@ public class StatisticsServiceImpl implements StatisticsService{
 
         List<GasEmissions> emissionsList = this.emissionsRepository.findAllEmissions();
 
-        Double totalNitrousOxide = 0D;
-        for (GasEmissions data : emissionsList) {
-            totalNitrousOxide += data.nitrousOxide();
-        }
+        Double totalNitrousOxide = emissionsList.stream().mapToDouble(GasEmissions::nitrousOxide).sum();
 
         return totalNitrousOxide / emissionsList.size();
     }
@@ -61,10 +53,7 @@ public class StatisticsServiceImpl implements StatisticsService{
 
         List<GasEmissions> emissionsList = this.emissionsRepository.findAllEmissions();
 
-        Double totalGreenhouseGases = 0D;
-        for (GasEmissions data : emissionsList) {
-            totalGreenhouseGases += data.greenhouseGases();
-        }
+        Double totalGreenhouseGases = emissionsList.stream().mapToDouble(GasEmissions::greenhouseGases).sum();
 
         return totalGreenhouseGases / emissionsList.size();
     }
