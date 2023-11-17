@@ -3,6 +3,7 @@ package org.example.repository;
 import org.example.model.GasEmissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+@Component
 public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
 
     private static final Logger logger = LoggerFactory.getLogger( EmissionsUsingFileRepositoryImpl.class);
