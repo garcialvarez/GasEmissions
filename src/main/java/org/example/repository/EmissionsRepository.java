@@ -5,4 +5,6 @@ import org.example.model.GasEmissions;
 public interface EmissionsRepository {
 
     List<GasEmissions> findAllEmissions();
+
+    GasEmissions addGasEmissions(GasEmissions newGasEmissions);
 }

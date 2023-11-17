@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
@@ -54,4 +55,18 @@ public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
 
     @Override
     public List<GasEmissions> findAllEmissions() { return emissionsList; }
+
+    @Override
+    public GasEmissions addGasEmissions (GasEmissions newGasEmissions) {
+        this.emissionsList.add( newGasEmissions );
+
+        return this.emissionsList.stream()
+                .filter( isTheEmissionsOfTheCountry( newGasEmissions ) )//Busca las emisiones en la lista que corresponda al pais de las emisiones recien creadas
+                .findAny()
+                .orElse( null );//Si no las encuentra devuelve nulo
+    }
+
+    private Predicate<GasEmissions> isTheEmissionsOfTheCountry(GasEmissions newGasEmissions) {
+        return p -> p.country().equals( newGasEmissions.country() );
+    }
 }

@@ -1,5 +1,8 @@
 package org.example.service;
 
+import java.util.List;
+import org.example.model.GasEmissions;
+
 public interface StatisticsService {
 
     //Mean
@@ -16,5 +19,8 @@ public interface StatisticsService {
 
     //Mode
     Double modeGreenhouseGases();
+    List<GasEmissions> listGasEmissions();
+
+    GasEmissions addGasEmissions (GasEmissions newGasEmissions);
 
 }

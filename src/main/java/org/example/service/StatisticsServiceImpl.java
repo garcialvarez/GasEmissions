@@ -163,4 +163,12 @@ public class StatisticsServiceImpl implements StatisticsService{
             return mode;
         }
     }
+
+    @Override
+    public List<GasEmissions> listGasEmissions() { return this.emissionsRepository.findAllEmissions(); }
+
+    @Override
+    public GasEmissions addGasEmissions(GasEmissions newGasEmissions) {
+        return this.emissionsRepository.addGasEmissions(newGasEmissions);
+    }
 }

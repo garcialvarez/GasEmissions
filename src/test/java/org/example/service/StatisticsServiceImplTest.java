@@ -1,8 +1,12 @@
 package org.example.service;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.example.model.GasEmissions;
 import org.example.repository.EmissionsUsingFileRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class StatisticsServiceImplTest {
 
@@ -77,6 +81,15 @@ public class StatisticsServiceImplTest {
         Double greenhouseGasesMode = this.statisticsService.modeGreenhouseGases();
 
         assertNull(greenhouseGasesMode); //Mode does not apply
+    }
+
+    @Test
+    void listing_all_emissions_should_be_returned_successfully() {
+        List<GasEmissions> gasEmissions = this.statisticsService.listGasEmissions();
+
+        assertNotNull(gasEmissions);
+        assertFalse(gasEmissions.isEmpty());
+        assertEquals(20, gasEmissions.size()); //20 country emissions
     }
 
 
