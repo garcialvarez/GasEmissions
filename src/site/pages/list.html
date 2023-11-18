@@ -52,7 +52,6 @@
         xhttp.send();
     }
 
-
     function createTable(json) {
         var tableBody = document.getElementById("table_body");
 
@@ -69,14 +68,9 @@
                 var td = document.createElement("td");
                 td.textContent = cell;
                 tr.appendChild(td);
-
             });
-
             tableBody.appendChild(tr);
-
         });
-
-
     }
 
 </script>

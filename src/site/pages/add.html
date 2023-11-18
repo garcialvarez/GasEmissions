@@ -32,11 +32,8 @@
   <label for="greenhouseGases">Greenhouse Gases:</label><br>
   <input type="text" id="greenhouseGases" name="greenhouseGases" value="" class="form-control"><br><br>
 
-
   <input type="submit" value="Save" class="btn btn-primary" onclick="add();">
 </form>
-
-
 
 <a href="../index.html" class="link-secondary">Home</a>
 
@@ -64,7 +61,6 @@
       "methane": methane.value,
       "nitrousOxide": nitrousOxide.value,
       "greenhouseGases": greenhouseGases.value
-
     }
 
     xmlhttp.send(JSON.stringify(newEmissions));
