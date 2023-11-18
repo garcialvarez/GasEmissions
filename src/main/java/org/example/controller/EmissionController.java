@@ -3,9 +3,7 @@ package org.example.controller;
 import java.util.List;
 
 import org.example.model.GasEmissions;
-import org.example.repository.EmissionsUsingFileRepositoryImpl;
 import org.example.service.StatisticsService;
-import org.example.service.StatisticsServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,11 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/emissions/")
-//@CrossOrigin(origins = "http://localhost:63342")
 @CrossOrigin(origins = "*")
 public class EmissionController {
 
-    StatisticsService statisticsService = new StatisticsServiceImpl( new EmissionsUsingFileRepositoryImpl());
+    //StatisticsService statisticsService = new StatisticsServiceImpl( new EmissionsUsingFileRepositoryImpl());
+    private final StatisticsService statisticsService;
+
+    public EmissionController(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
+
     @GetMapping
     public List<GasEmissions> listGasEmissions(){
 

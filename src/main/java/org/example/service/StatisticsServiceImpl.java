@@ -3,10 +3,13 @@ import org.example.model.GasEmissions;
 import org.example.repository.EmissionsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+@Service
 public class StatisticsServiceImpl implements StatisticsService{
 
     private final EmissionsRepository emissionsRepository;
