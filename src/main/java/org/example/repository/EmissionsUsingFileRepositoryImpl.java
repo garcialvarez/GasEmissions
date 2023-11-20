@@ -22,20 +22,17 @@ public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
     private final List<GasEmissions> emissionsList;
 
     public EmissionsUsingFileRepositoryImpl() {
-        this.emissionsList = new ArrayList<>(loadEmissions());//Al momento de construir el Repository se cargan los datos desde el archivo
+        this.emissionsList = new ArrayList<>(loadEmissions()); //At the moment of constructing the repository, data is loaded from the archive
     }
 
     private List<GasEmissions> loadEmissions(){
-        logger.info( "Cargando los datos desde archivo" );
+        logger.info( "Loading data from the archive" );
         List<String> plainTextGasEmissonsList =  readFileWithGrades();
         return plainTextGasEmissonsList.stream().map( this::buildGasEmission ).toList();
     }
 
     private List<String> readFileWithGrades(){
-        //Este método lee el archivo y adiciona cada linea en una posicion de una Lista
-
-        //Para el ejercicio se utiliza la ruta donde se encentra el archivo en el codigo fuente.
-        //Este ruta es diferente al momento de empaquetar el proyecto
+        //This method reads the archive and adds every line in a position of a list
 
         Path path = Paths.get( "./src/main/resources/emissions.txt");
         try (Stream<String> stream = Files.lines( path)) {
@@ -43,14 +40,13 @@ public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
         } catch (IOException x) {
             logger.error("IOException: {0}", x);
         }
-        return Collections.emptyList();//Devuelve una lista vacía
+        return Collections.emptyList();//Returns an empty list
     }
 
     private GasEmissions buildGasEmission(String plainTextGrade){
-    /*Este metodo toma una linea del archivo para generar un vector
-   y con dicho vector generar una Nota
-     */
-        String[] questionArray = plainTextGrade.split(",");//En el archivo las notas vienen separadas por comas por ejemplo: UNIDAD 1,4.5D,2023-08-01
+    //This method takes a line of the archive to generate a vector, and create an emission with it
+
+        String[] questionArray = plainTextGrade.split(","); //In the archive, emissions are separated by commas, like this: Country, 123, 123, 123, 123
 
         return new GasEmissions( questionArray[0], Double.valueOf(questionArray[1]), Double.valueOf(questionArray[2]), Double.valueOf(questionArray[3]), Double.valueOf(questionArray[4]));
     }
@@ -63,9 +59,9 @@ public class EmissionsUsingFileRepositoryImpl implements EmissionsRepository {
         this.emissionsList.add( newGasEmissions );
 
         return this.emissionsList.stream()
-                .filter( isTheEmissionsOfTheCountry( newGasEmissions ) )//Busca las emisiones en la lista que corresponda al pais de las emisiones recien creadas
+                .filter( isTheEmissionsOfTheCountry( newGasEmissions ) )//Looks for the emissions in a list according to the country of the emissions
                 .findAny()
-                .orElse( null );//Si no las encuentra devuelve nulo
+                .orElse( null );//If doesn't find them, returns null
     }
 
     private Predicate<GasEmissions> isTheEmissionsOfTheCountry(GasEmissions newGasEmissions) {
